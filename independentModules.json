@@ -1,0 +1,47 @@
+{
+   "modules": [
+      {
+         "name": "Root level files",
+         "pattern": "src/*.{ts,tsx}",
+         "allowImportsFrom": [
+            "src/app/**",
+            "{sharedImports}",
+            "{featurePublicApis}",
+            "src/*"
+         ],
+         "errorMessage": "🔥 Root files can bootstrap the app but should follow import rules. 🔥"
+      },
+
+      {
+         "name": "App folder",
+         "pattern": "src/app/**",
+         "allowImportsFrom": [
+            "src/app/**",
+            "{sharedImports}",
+            "src/features/**"
+         ]
+      },
+
+      {
+         "name": "Features",
+         "pattern": "src/features/**",
+         "allowImportsFrom": [
+            "{family_3}/**",
+            "{sharedImports}",
+            "{featurePublicApis}"
+         ],
+         "errorMessage": "🔥 A feature can only import items from shared folders, its own feature, or the public API (index.ts) of other features. 🔥"
+      },
+
+      {
+         "name": "Shared",
+         "pattern": "src/shared/**/*",
+         "allowImportsFrom": ["{sharedImports}"],
+         "errorMessage": "🔥 Shared folders can't import items from the `features` or `app` folders. 🔥"
+      }
+   ],
+   "reusableImportPatterns": {
+      "sharedImports": ["src/shared/**/*", "src/env.ts"],
+      "featurePublicApis": ["src/features/*/index.ts"]
+   }
+}
