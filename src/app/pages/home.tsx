@@ -1,76 +1,72 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import type * as z from 'zod';
 
-import { ThemeToggler } from '@/shared/components/theme-toggler';
+import { TextInput } from '@/shared/components/inputs/text-input';
 import { Button } from '@/shared/components/ui/button';
+import {
+   Card,
+   CardContent,
+   CardDescription,
+   CardFooter,
+   CardHeader,
+   CardTitle,
+} from '@/shared/components/ui/card';
+import { Field, FieldGroup } from '@/shared/components/ui/field';
+import { FormDemoProvider } from '@/shared/context/form';
+import { formSchema } from '@/shared/schema';
 
 export default function Home() {
-   return (
-      <div className='flex h-screen w-full flex-col items-center justify-center gap-4'>
-         <h1 className='text-3xl font-bold underline'>Home Page</h1>
-         <Button onClick={() => toast('Okay, That is Enough!!')}>
-            Click Me
-         </Button>
-         <ThemeToggler />
-         <SonnerTypes />
-      </div>
-   );
-}
+   const form = useForm<z.infer<typeof formSchema>>({
+      resolver: zodResolver(formSchema),
+      defaultValues: {
+         username: '',
+      },
+   });
 
-export function SonnerTypes() {
+   function onSubmit(data: z.infer<typeof formSchema>) {
+      toast('You submitted the following values:', {
+         description: (
+            <pre className='bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4'>
+               <code>{JSON.stringify(data, null, 2)}</code>
+            </pre>
+         ),
+      });
+   }
    return (
-      <div className='flex flex-wrap gap-2'>
-         <Button
-            variant='outline'
-            onClick={() => toast('Event has been created')}
-         >
-            Default
-         </Button>
-         <Button
-            variant='outline'
-            onClick={() => toast.success('Event has been created')}
-         >
-            Success
-         </Button>
-         <Button
-            variant='outline'
-            onClick={() =>
-               toast.info('Be at the area 10 minutes before the event time')
-            }
-         >
-            Info
-         </Button>
-         <Button
-            variant='outline'
-            onClick={() =>
-               toast.warning('Event start time cannot be earlier than 8am')
-            }
-         >
-            Warning
-         </Button>
-         <Button
-            variant='outline'
-            onClick={() => toast.error('Event has not been created')}
-         >
-            Error
-         </Button>
-         <Button
-            variant='outline'
-            onClick={() => {
-               toast.promise<{ name: string }>(
-                  () =>
-                     new Promise((resolve) =>
-                        setTimeout(() => resolve({ name: 'Event' }), 2000)
-                     ),
-                  {
-                     loading: 'Loading...',
-                     success: (data) => `${data.name} has been created`,
-                     error: 'Error',
-                  }
-               );
-            }}
-         >
-            Promise
-         </Button>
+      <div className='flex h-screen w-full flex-col items-center justify-center'>
+         <Card className='w-full sm:max-w-4xl'>
+            <CardHeader>
+               <CardTitle>Form Demo</CardTitle>
+               <CardDescription>Edit and test the form below.</CardDescription>
+            </CardHeader>
+
+            <CardContent>
+               <form id='form-id' onSubmit={form.handleSubmit(onSubmit)}>
+                  <FormDemoProvider form={form}>
+                     <FieldGroup>
+                        <TextInput />
+                     </FieldGroup>
+                  </FormDemoProvider>
+               </form>
+            </CardContent>
+
+            <CardFooter>
+               <Field orientation='horizontal'>
+                  <Button
+                     type='button'
+                     variant='outline'
+                     onClick={() => form.reset()}
+                  >
+                     Reset
+                  </Button>
+                  <Button type='submit' form='form-id'>
+                     Save
+                  </Button>
+               </Field>
+            </CardFooter>
+         </Card>
       </div>
    );
 }
