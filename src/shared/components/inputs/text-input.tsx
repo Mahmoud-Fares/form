@@ -1,4 +1,4 @@
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import {
    Field,
@@ -7,10 +7,9 @@ import {
    FieldLabel,
 } from '@/shared/components/ui/field';
 import { Input } from '@/shared/components/ui/input';
-import { useFormDemo } from '@/shared/context/form';
 
 export function TextInput() {
-   const form = useFormDemo();
+   const form = useFormContext();
 
    return (
       <Controller
