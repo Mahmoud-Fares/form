@@ -12,6 +12,7 @@ export function TextInput() {
    const form = useFormContext();
 
    return (
+      // demo-start
       <Controller
          name='username'
          control={form.control}
@@ -39,5 +40,6 @@ export function TextInput() {
             </Field>
          )}
       />
+      // demo-end
    );
 }

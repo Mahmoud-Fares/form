@@ -1,10 +1,12 @@
 import { useId } from 'react';
 
+import { Home } from 'lucide-react';
 import {
    type FieldValues,
    FormProvider,
    type UseFormReturn,
 } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import type * as z from 'zod';
 
@@ -42,6 +44,7 @@ export function FormWrapper<TSchema extends z.ZodType<FieldValues>>({
    }
 
    const id = useId();
+   const navigate = useNavigate();
 
    return (
       <Card className='w-full sm:max-w-4xl'>
@@ -58,6 +61,13 @@ export function FormWrapper<TSchema extends z.ZodType<FieldValues>>({
 
          <CardFooter>
             <Field orientation='horizontal'>
+               <Button
+                  type='button'
+                  variant='outline'
+                  onClick={() => navigate('/')}
+               >
+                  <Home />
+               </Button>
                <Button
                   type='button'
                   variant='outline'

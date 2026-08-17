@@ -2,9 +2,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
+import { CodeBlock } from '@/shared/components/code-block';
 import { FormWrapper } from '@/shared/components/form-wrapper';
 import { TextInput } from '@/shared/components/inputs/text-input';
+import TextInputCode from '@/shared/components/inputs/text-input.tsx?raw';
 import { PageWrapper } from '@/shared/components/page-wrapper';
+import { extractSnippet } from '@/shared/lib/utils/extract-snippet';
 
 const textInputSchema = z.object({
    username: z
@@ -30,6 +33,8 @@ export default function TextPage() {
          <FormWrapper form={form} schema={textInputSchema}>
             <TextInput />
          </FormWrapper>
+
+         <CodeBlock code={extractSnippet(TextInputCode)} language='tsx' />
       </PageWrapper>
    );
 }
