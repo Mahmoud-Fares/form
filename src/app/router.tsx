@@ -10,6 +10,7 @@ const AuthLayout = lazy(() => import('@/app/layouts/auth-layout'));
 
 const Home = lazy(() => import('@/app/pages/home'));
 const TextPage = lazy(() => import('@/app/pages/text'));
+const SchedulePage = lazy(() => import('@/app/pages/schedule'));
 
 const NotFound = lazy(() => import('@/app/pages/not-found'));
 
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       children: [
          { index: true, element: <Home /> },
          { path: 'text', element: <TextPage /> },
+         { path: 'schedule', element: <SchedulePage /> },
          { path: '*', element: <NotFound /> },
       ],
    },
