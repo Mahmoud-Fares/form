@@ -14,6 +14,10 @@ export default function Home() {
             <Item>
                <Link to='/schedule'>Schedule</Link>
             </Item>
+
+            <Item>
+               <Link to='/checkbox'>Checkbox</Link>
+            </Item>
          </ul>
       </div>
    );
