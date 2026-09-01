@@ -18,6 +18,10 @@ export default function Home() {
             <Item>
                <Link to='/checkbox'>Checkbox</Link>
             </Item>
+
+            <Item>
+               <Link to='/multi-tabs'>Multi Tabs</Link>
+            </Item>
          </ul>
       </div>
    );
