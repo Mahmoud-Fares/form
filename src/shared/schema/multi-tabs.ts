@@ -28,3 +28,16 @@ export const multiTabsFormSchema = z.object({
 });
 
 export type MultiTabsFormValues = z.infer<typeof multiTabsFormSchema>;
+
+// the old way to map fields to tabs
+// export const tabSchemas = {
+//    'tab-1': firstTab,
+//    'tab-2': secondTab,
+//    'tab-3': thirdTab,
+// } as const;
+
+// export const fieldToTab = Object.fromEntries(
+//    Object.entries(tabSchemas).flatMap(([tab, schema]) =>
+//       Object.keys(schema.shape).map((field) => [field, tab])
+//    )
+// ) as Record<keyof MultiTabsFormValues, keyof typeof tabSchemas>;
