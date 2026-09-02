@@ -7,7 +7,7 @@ import type { DatePickerFormValues } from '@/app/pages/date-picker';
 
 import { DateInput } from './date-input';
 
-export function DatePickerInput() {
+export function DatePickerForm() {
    const { control } = useFormContext<DatePickerFormValues>();
 
    return (

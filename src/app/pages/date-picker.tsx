@@ -5,9 +5,9 @@ import * as z from 'zod';
 import { CodeBlock } from '@/shared/components/code-block';
 import { FormWrapper } from '@/shared/components/form-wrapper';
 import { Header } from '@/shared/components/header';
+import { DatePickerForm } from '@/shared/components/inputs/date-form';
+import DatePickerFormCode from '@/shared/components/inputs/date-form.tsx?raw';
 import DateInputCode from '@/shared/components/inputs/date-input.tsx?raw';
-import { DatePickerInput } from '@/shared/components/inputs/date-picker-input';
-import DatePickerInputCode from '@/shared/components/inputs/date-picker-input.tsx?raw';
 import { PageWrapper } from '@/shared/components/page-wrapper';
 import { extractSnippet } from '@/shared/lib/utils/extract-snippet';
 
@@ -28,11 +28,11 @@ export default function DatePickerPage() {
    return (
       <PageWrapper>
          <FormWrapper form={form} schema={datePickerSchema}>
-            <DatePickerInput />
+            <DatePickerForm />
          </FormWrapper>
 
          <Header>Usage example</Header>
-         <CodeBlock code={extractSnippet(DatePickerInputCode)} language='tsx' />
+         <CodeBlock code={extractSnippet(DatePickerFormCode)} language='tsx' />
 
          <Header>Date Input</Header>
          <CodeBlock code={extractSnippet(DateInputCode)} language='tsx' />
