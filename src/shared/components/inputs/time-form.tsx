@@ -1,10 +1,16 @@
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { Field, FieldError, FieldLabel } from '@/shared/components/ui/field';
+import {
+   Field,
+   FieldError,
+   FieldGroup,
+   FieldLabel,
+} from '@/shared/components/ui/field';
 
 // eslint-disable-next-line project-structure/independent-modules
 import type { TimeFormValues } from '@/app/pages/time';
 
+import { TimeCombobox } from './time-combobox';
 import { TimeInput } from './time-input';
 
 export function TimeForm() {
@@ -12,25 +18,47 @@ export function TimeForm() {
 
    return (
       // demo-start
-      <Controller
-         name='time'
-         control={control}
-         render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-               <FieldLabel htmlFor='time'>Time:</FieldLabel>
+      <FieldGroup>
+         <Controller
+            name='time'
+            control={control}
+            render={({ field, fieldState }) => (
+               <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Time:</FieldLabel>
 
-               <TimeInput
-                  id='time'
-                  aria-invalid={fieldState.invalid}
-                  {...field}
-               />
+                  <TimeInput
+                     id={field.name}
+                     aria-invalid={fieldState.invalid}
+                     {...field}
+                  />
 
-               {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-               )}
-            </Field>
-         )}
-      />
+                  {fieldState.invalid && (
+                     <FieldError errors={[fieldState.error]} />
+                  )}
+               </Field>
+            )}
+         />
+
+         <Controller
+            name='time2'
+            control={control}
+            render={({ field, fieldState }) => (
+               <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Time:</FieldLabel>
+
+                  <TimeCombobox
+                     id={field.name}
+                     aria-invalid={fieldState.invalid}
+                     {...field}
+                  />
+
+                  {fieldState.invalid && (
+                     <FieldError errors={[fieldState.error]} />
+                  )}
+               </Field>
+            )}
+         />
+      </FieldGroup>
       // demo-end
    );
 }

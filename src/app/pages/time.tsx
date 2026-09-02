@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { CodeBlock } from '@/shared/components/code-block';
 import { FormWrapper } from '@/shared/components/form-wrapper';
 import { Header } from '@/shared/components/header';
+import TimeComboboxCode from '@/shared/components/inputs/time-combobox.tsx?raw';
 import { TimeForm } from '@/shared/components/inputs/time-form';
 import TimeFormCode from '@/shared/components/inputs/time-form.tsx?raw';
 import TimeInputCode from '@/shared/components/inputs/time-input.tsx?raw';
@@ -32,6 +33,11 @@ const timeSchema = z.object({
       // precision must match TimeInput's step='1' → "HH:mm:ss"
       // use the step you want, then ask claude for the precision you need
       .pipe(z.iso.time({ precision: 0, error: 'Invalid time' })),
+
+   time2: z
+      .string()
+      .min(1, 'Time is required')
+      .regex(/^\d{2}:\d{2}$/, 'Invalid time'),
 });
 
 export type TimeFormValues = z.infer<typeof timeSchema>;
@@ -41,6 +47,7 @@ export default function TimePage() {
       resolver: zodResolver(timeSchema),
       defaultValues: {
          time: '12:00:00',
+         time2: '',
       },
    });
 
@@ -55,6 +62,9 @@ export default function TimePage() {
 
          <Header>Time Input</Header>
          <CodeBlock code={extractSnippet(TimeInputCode)} language='tsx' />
+
+         <Header>Time Combobox</Header>
+         <CodeBlock code={extractSnippet(TimeComboboxCode)} language='tsx' />
       </PageWrapper>
    );
 }
