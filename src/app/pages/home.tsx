@@ -22,6 +22,10 @@ export default function Home() {
             <Item>
                <Link to='/multi-tabs'>Multi Tabs</Link>
             </Item>
+
+            <Item>
+               <Link to='/date-picker'>Date Picker</Link>
+            </Item>
          </ul>
       </div>
    );

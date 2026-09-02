@@ -13,6 +13,7 @@ const TextPage = lazy(() => import('@/app/pages/text'));
 const SchedulePage = lazy(() => import('@/app/pages/schedule'));
 const CheckboxPage = lazy(() => import('@/app/pages/checkbox'));
 const MultiTabs = lazy(() => import('@/app/pages/multi-tabs'));
+const DatePickerPage = lazy(() => import('@/app/pages/date-picker'));
 
 const NotFound = lazy(() => import('@/app/pages/not-found'));
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
          { path: 'schedule', element: <SchedulePage /> },
          { path: 'checkbox', element: <CheckboxPage /> },
          { path: 'multi-tabs', element: <MultiTabs /> },
+         { path: 'date-picker', element: <DatePickerPage /> },
          { path: '*', element: <NotFound /> },
       ],
    },
