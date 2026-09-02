@@ -4,6 +4,7 @@ import * as z from 'zod';
 
 import { CodeBlock } from '@/shared/components/code-block';
 import { FormWrapper } from '@/shared/components/form-wrapper';
+import { Header } from '@/shared/components/header';
 import DateInputCode from '@/shared/components/inputs/date-input.tsx?raw';
 import { DatePickerInput } from '@/shared/components/inputs/date-picker-input';
 import DatePickerInputCode from '@/shared/components/inputs/date-picker-input.tsx?raw';
@@ -30,12 +31,10 @@ export default function DatePickerPage() {
             <DatePickerInput />
          </FormWrapper>
 
-         <h3 className='leading-none font-semibold'>
-            Date Picker Input (Usage example)
-         </h3>
+         <Header>Date Picker Input (Usage example)</Header>
          <CodeBlock code={extractSnippet(DatePickerInputCode)} language='tsx' />
 
-         <h3 className='leading-none font-semibold'>Date Input</h3>
+         <Header>Date Input</Header>
          <CodeBlock code={extractSnippet(DateInputCode)} language='tsx' />
       </PageWrapper>
    );

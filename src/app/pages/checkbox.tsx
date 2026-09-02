@@ -4,6 +4,7 @@ import z from 'zod';
 
 import { CodeBlock } from '@/shared/components/code-block';
 import { FormWrapper } from '@/shared/components/form-wrapper';
+import { Header } from '@/shared/components/header';
 import { CheckboxInput } from '@/shared/components/inputs/checkbox-input';
 import CheckboxInputCode from '@/shared/components/inputs/checkbox-input.tsx?raw';
 import { PageWrapper } from '@/shared/components/page-wrapper';
@@ -50,7 +51,7 @@ export default function CheckboxPage() {
             <CheckboxInput />
          </FormWrapper>
 
-         <h3 className='leading-none font-semibold'>Single Variant 1</h3>
+         <Header>Single Variant 1</Header>
          <CodeBlock
             code={extractSnippet(
                CheckboxInputCode,
@@ -60,7 +61,7 @@ export default function CheckboxPage() {
             language='tsx'
          />
 
-         <h3 className='leading-none font-semibold'>Single Variant 2</h3>
+         <Header>Single Variant 2</Header>
          <CodeBlock
             code={extractSnippet(
                CheckboxInputCode,
@@ -70,7 +71,7 @@ export default function CheckboxPage() {
             language='tsx'
          />
 
-         <h3 className='leading-none font-semibold'>Single Variant 3</h3>
+         <Header>Single Variant 3</Header>
          <CodeBlock
             code={extractSnippet(
                CheckboxInputCode,
@@ -80,7 +81,7 @@ export default function CheckboxPage() {
             language='tsx'
          />
 
-         <h3 className='leading-none font-semibold'>Multi/Group</h3>
+         <Header>Multi/Group</Header>
          <CodeBlock
             code={extractSnippet(
                CheckboxInputCode,
