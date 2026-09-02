@@ -28,6 +28,10 @@ export default function Home() {
             </Item>
 
             <Item>
+               <Link to='/date-range'>Date Range</Link>
+            </Item>
+
+            <Item>
                <Link to='/time'>Time</Link>
             </Item>
          </ul>
