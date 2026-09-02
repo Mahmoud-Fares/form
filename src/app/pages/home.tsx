@@ -26,6 +26,10 @@ export default function Home() {
             <Item>
                <Link to='/date-picker'>Date Picker</Link>
             </Item>
+
+            <Item>
+               <Link to='/time'>Time</Link>
+            </Item>
          </ul>
       </div>
    );
