@@ -31,7 +31,7 @@ export default function DatePickerPage() {
             <DatePickerInput />
          </FormWrapper>
 
-         <Header>Date Picker Input (Usage example)</Header>
+         <Header>Usage example</Header>
          <CodeBlock code={extractSnippet(DatePickerInputCode)} language='tsx' />
 
          <Header>Date Input</Header>

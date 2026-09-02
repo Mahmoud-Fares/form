@@ -17,12 +17,14 @@ export function DatePickerInput() {
          control={control}
          render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-               <FieldLabel htmlFor='date'>Date:</FieldLabel>
+               <FieldLabel htmlFor={field.name}>Date:</FieldLabel>
 
                <DateInput
+                  id={field.name}
                   value={field.value}
                   onChange={field.onChange}
                   placeholder='Select a date'
+                  aria-invalid={fieldState.invalid}
                />
 
                {fieldState.invalid && (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { format } from 'date-fns';
-import { ChevronDownIcon } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
 import { Calendar } from '@/shared/components/ui/calendar';
@@ -13,8 +13,10 @@ import {
 import { cn } from '@/shared/lib/utils';
 
 type Props = {
-   value?: Date;
-   onChange?: (date: Date | undefined) => void;
+   id: string;
+   value: Date | undefined;
+   onChange: (date: Date | undefined) => void;
+   'aria-invalid': boolean;
    placeholder?: string;
    disabled?: boolean;
    triggerClassName?: string;
@@ -23,6 +25,7 @@ type Props = {
 };
 
 export function DateInput({
+   id,
    value,
    onChange,
    placeholder = 'Select date',
@@ -30,11 +33,12 @@ export function DateInput({
    triggerClassName,
    dateFormat = 'PPP',
    defaultMonth,
+   'aria-invalid': ariaInvalid,
 }: Props) {
    const [open, setOpen] = React.useState(false);
 
    const handleSelect = (date: Date | undefined) => {
-      onChange?.(date);
+      onChange(date);
       setOpen(false);
    };
 
@@ -42,26 +46,43 @@ export function DateInput({
       <Popover open={open} onOpenChange={setOpen}>
          <PopoverTrigger asChild>
             <Button
+               id={id}
                variant='outline'
                disabled={disabled}
-               className={cn('justify-between font-normal', triggerClassName)}
+               className={cn('justify-start font-normal', triggerClassName)}
+               aria-invalid={ariaInvalid}
             >
+               <CalendarIcon
+                  data-icon='inline-start'
+                  className={cn(
+                     !value && 'text-muted-foreground',
+                     ariaInvalid && 'text-destructive'
+                  )}
+               />
+
                {value ? (
                   format(value, dateFormat)
                ) : (
-                  <span className='text-muted-foreground'> {placeholder}</span>
+                  <span
+                     className={cn(
+                        'text-muted-foreground',
+                        ariaInvalid && 'text-destructive'
+                     )}
+                  >
+                     {' '}
+                     {placeholder}
+                  </span>
                )}
-               <ChevronDownIcon />
             </Button>
          </PopoverTrigger>
 
-         <PopoverContent className='w-auto overflow-hidden p-0' align='start'>
+         <PopoverContent className='w-auto p-0' align='start'>
             <Calendar
                mode='single'
                selected={value}
-               captionLayout='dropdown'
-               defaultMonth={defaultMonth ?? value}
                onSelect={handleSelect}
+               defaultMonth={defaultMonth ?? value}
+               captionLayout='dropdown'
                disabled={disabled}
             />
          </PopoverContent>
