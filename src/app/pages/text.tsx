@@ -20,8 +20,10 @@ const textInputSchema = z.object({
       ),
 });
 
+export type TextFormValues = z.infer<typeof textInputSchema>;
+
 export default function TextPage() {
-   const form = useForm<z.infer<typeof textInputSchema>>({
+   const form = useForm<TextFormValues>({
       resolver: zodResolver(textInputSchema),
       defaultValues: {
          username: '',

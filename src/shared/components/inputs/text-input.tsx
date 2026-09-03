@@ -8,14 +8,17 @@ import {
 } from '@/shared/components/ui/field';
 import { Input } from '@/shared/components/ui/input';
 
+// eslint-disable-next-line project-structure/independent-modules
+import type { TextFormValues } from '@/app/pages/text';
+
 export function TextInput() {
-   const form = useFormContext();
+   const { control } = useFormContext<TextFormValues>();
 
    return (
       // demo-start
       <Controller
          name='username'
-         control={form.control}
+         control={control}
          render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
                <FieldLabel htmlFor={field.name}>Username</FieldLabel>
