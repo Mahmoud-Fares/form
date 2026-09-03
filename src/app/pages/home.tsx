@@ -34,6 +34,10 @@ export default function Home() {
             <Item>
                <Link to='/time'>Time</Link>
             </Item>
+
+            <Item>
+               <Link to='/select'>Select</Link>
+            </Item>
          </ul>
       </div>
    );
