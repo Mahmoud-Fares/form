@@ -53,7 +53,7 @@ export default function TimePage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={timeSchema}>
+         <FormWrapper form={form}>
             <TimeForm />
          </FormWrapper>
 

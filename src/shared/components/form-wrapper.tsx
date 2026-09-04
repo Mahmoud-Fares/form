@@ -8,7 +8,6 @@ import {
 } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import type * as z from 'zod';
 
 import { Button } from '@/shared/components/ui/button';
 import {
@@ -21,19 +20,16 @@ import {
 } from '@/shared/components/ui/card';
 import { Field } from '@/shared/components/ui/field';
 
-type Props<TSchema extends z.ZodType<FieldValues>> = {
-   schema: TSchema;
-   form: UseFormReturn<z.infer<TSchema>>;
+type Props<TFieldValues extends FieldValues> = {
+   form: UseFormReturn<TFieldValues>;
    children: React.ReactNode;
 };
 
-export function FormWrapper<TSchema extends z.ZodType<FieldValues>>({
+export function FormWrapper<TFieldValues extends FieldValues>({
    children,
    form,
-   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-   schema,
-}: Props<TSchema>) {
-   function onSubmit(data: z.infer<typeof schema>) {
+}: Props<TFieldValues>) {
+   function onSubmit(data: TFieldValues) {
       toast('You submitted the following values:', {
          description: (
             <pre className='bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4'>

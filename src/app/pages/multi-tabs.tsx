@@ -24,7 +24,7 @@ export default function MultiTabs() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={multiTabsFormSchema}>
+         <FormWrapper form={form}>
             <MultiTabsForm />
          </FormWrapper>
 

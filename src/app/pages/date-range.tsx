@@ -36,7 +36,7 @@ export default function DateRangePage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={dateRangeSchema}>
+         <FormWrapper form={form}>
             <DateRangeForm />
          </FormWrapper>
 

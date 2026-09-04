@@ -32,7 +32,7 @@ export default function TextPage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={textInputSchema}>
+         <FormWrapper form={form}>
             <TextInput />
          </FormWrapper>
 

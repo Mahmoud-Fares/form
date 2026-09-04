@@ -25,7 +25,7 @@ export default function SelectPage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={selectInputSchema}>
+         <FormWrapper form={form}>
             <SelectInput />
          </FormWrapper>
 

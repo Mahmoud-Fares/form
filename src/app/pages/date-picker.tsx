@@ -27,7 +27,7 @@ export default function DatePickerPage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={datePickerSchema}>
+         <FormWrapper form={form}>
             <DatePickerForm />
          </FormWrapper>
 

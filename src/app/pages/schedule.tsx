@@ -23,7 +23,7 @@ export default function SchedulePage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={scheduleInputSchema}>
+         <FormWrapper form={form}>
             <ScheduleInput />
          </FormWrapper>
 

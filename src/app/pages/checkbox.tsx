@@ -47,7 +47,7 @@ export default function CheckboxPage() {
 
    return (
       <PageWrapper>
-         <FormWrapper form={form} schema={checkboxInputSchema}>
+         <FormWrapper form={form}>
             <CheckboxInput />
          </FormWrapper>
 
