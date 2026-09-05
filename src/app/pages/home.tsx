@@ -36,6 +36,10 @@ export default function Home() {
             </Item>
 
             <Item>
+               <Link to='/special-combobox'>Special Combobox</Link>
+            </Item>
+
+            <Item>
                <Link to='/select'>Select</Link>
             </Item>
          </ul>

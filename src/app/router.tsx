@@ -16,6 +16,7 @@ const MultiTabs = lazy(() => import('@/app/pages/multi-tabs'));
 const DatePickerPage = lazy(() => import('@/app/pages/date-picker'));
 const DateRangePage = lazy(() => import('@/app/pages/date-range'));
 const TimePage = lazy(() => import('@/app/pages/time'));
+const SpecialComboboxPage = lazy(() => import('@/app/pages/special-combobox'));
 const SelectPage = lazy(() => import('@/app/pages/select'));
 
 const NotFound = lazy(() => import('@/app/pages/not-found'));
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
          { path: 'date-picker', element: <DatePickerPage /> },
          { path: 'date-range', element: <DateRangePage /> },
          { path: 'time', element: <TimePage /> },
+         { path: 'special-combobox', element: <SpecialComboboxPage /> },
          { path: 'select', element: <SelectPage /> },
          { path: '*', element: <NotFound /> },
       ],
