@@ -67,7 +67,7 @@ export function TimeCombobox({
             aria-invalid={ariaInvalid}
             placeholder={placeholder ?? 'Select a time'}
             showClear={!!value}
-            className={cn(triggerClassName ?? 'w-24')}
+            className={cn(triggerClassName ?? 'min-w-22')}
          />
 
          <ComboboxContent>
